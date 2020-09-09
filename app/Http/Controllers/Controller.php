@@ -17,14 +17,24 @@ class Controller extends BaseController
     // }
 
     public function index(){
-        return view('pages.index');
+        $title = 'Welcome to Laravel!!';
+        // 1st method
+        // return view('pages.index', compact('title'));
+
+        //2nd method
+        return view('pages.index')->with('title', $title);
     }
 
     public function about(){
-        return view('pages.about');
+        $title = 'About Us';
+        return view('pages.about', compact('title'));
     }
 
     public function services(){
-        return view('pages.services');
+        $data = array(
+            'title' => 'Services',
+            'services' => ['Web Design', 'Programming', 'SEO']
+        );
+        return view('pages.services')->with($data);
     }
 }

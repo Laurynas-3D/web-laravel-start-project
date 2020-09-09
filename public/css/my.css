@@ -1,0 +1,17 @@
+.nav-push-down{
+    margin-bottom: 50px;
+}
+html{
+    background:  #f5f8fa;
+}
+.main-box{
+    background:  #f5f8fa;
+}
+body{
+    background:  #f5f8fa !important;
+}
+h1{
+    color: dimgray !important;
+    font-family: 'Raleway', sans-serif !important;
+
+}
