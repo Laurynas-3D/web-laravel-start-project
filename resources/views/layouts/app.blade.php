@@ -6,6 +6,7 @@
     <title>{{config('app.name')}}</title>
     <link rel="stylesheet" href="{{asset('css/my.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet"> 
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> --}}
 <title>{{config('app.name', 'HW-APP')}}</title>
@@ -17,4 +18,6 @@
         @yield('content')
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{asset('js/bootstrap.js')}}"></script>
 </html>

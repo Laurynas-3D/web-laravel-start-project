@@ -37,4 +37,18 @@ class Controller extends BaseController
         );
         return view('pages.services')->with($data);
     }
+
+    // 
+    public function hw(){
+        $title = 'Hello World';
+        return view('pages.hw')->with('title', $title);
+    }
+
+    // 
+    public function welcome(){
+        $title = 'Welcome';
+        return view('pages.welcome')->with('title', $title);
+    }
 }
+
+

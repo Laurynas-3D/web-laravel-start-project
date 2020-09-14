@@ -40,3 +40,5 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
 Route::get('/', 'Controller@index');
 Route::get('/about', 'Controller@about');
 Route::get('/services', 'Controller@services');
+Route::get('/hw', 'Controller@hw');
+Route::get('/welcome', 'Controller@welcome');
