@@ -193,7 +193,10 @@ $array1 = [
     ]
 ];
 
-// //Fully persistent. Using 'use' keyword
+
+// https://www.php.net/manual/en/function.array-walk-recursive.php
+// Fully persistent. Using 'use' keyword
+
 
 // $counter = 0;
 // array_walk_recursive( $array1, function($value, $key) use (&$counter) {

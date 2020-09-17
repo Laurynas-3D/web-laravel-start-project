@@ -42,3 +42,4 @@ Route::get('/about', 'Controller@about');
 Route::get('/services', 'Controller@services');
 Route::get('/hw', 'Controller@hw');
 Route::get('/welcome', 'Controller@welcome');
+Route::get('/testbox', 'Controller@testbox');

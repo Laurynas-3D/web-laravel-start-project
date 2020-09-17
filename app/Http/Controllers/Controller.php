@@ -49,6 +49,12 @@ class Controller extends BaseController
         $title = 'Welcome';
         return view('pages.welcome')->with('title', $title);
     }
+
+    // 
+    public function testbox(){
+        $title = 'testbox';
+        return view('pages.testbox')->with('title', $title);
+    }
 }
 
 

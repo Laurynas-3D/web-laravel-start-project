@@ -16,6 +16,7 @@
           <li><a href="/about">About</a></li>
           <li><a href="/services">Services</a></li>
           <li><a href="/hw">HW</a></li>
+          <li><a href="/testbox">testbox</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
