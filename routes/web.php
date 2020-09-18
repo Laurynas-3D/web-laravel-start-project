@@ -44,4 +44,5 @@ Route::get('/hw', 'Controller@hw');
 Route::get('/welcome', 'Controller@welcome');
 Route::get('/testbox', 'Controller@testbox');
 
+// automatically map those routes to functions; PostsController.php
 Route::resource('posts', 'PostsController');
