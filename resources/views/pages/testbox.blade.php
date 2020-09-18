@@ -120,15 +120,15 @@ function recursive2($array){
 }
 recursive2($array1);
 
-echo "<br>";
-echo "recursive simple walk KESTO UPDATED<br>";
-function recursive3($array){
-    foreach($array as $value)
-        is_array($value)
-            ? recursive3($value);
-            : echo $value, '<br>';
-}
-recursive3($array1);
+// echo "<br>";
+// echo "recursive simple walk KESTO UPDATED<br>";
+// function recursive3($array){
+//     foreach($array as $value)
+//         is_array($value)
+//             ? recursive3($value)
+//             : echo $value '<br>';
+// }
+// recursive3($array1);
 
 // stackoverflow – simple reusable implementation:
 
