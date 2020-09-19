@@ -2,5 +2,5 @@
 
 @section('content')
 <h1>{{$title}}</h1>
-    <p>this is the laravel application from the "Laravel from scratch" Youtube series</p>
+    <p>This is the CRUD laravel application.</p>
 @endsection
