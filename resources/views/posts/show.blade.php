@@ -4,7 +4,11 @@
     <a href="/posts" class="btn btn-default">Go Back</a>
     <h1>{{$post->title}}</h1>
 
-    <div>{{$post->body}}</div>
+    {{-- without parsing html --}}
+    {{-- <div class="text_gray">{{$post->body}}</div>  --}}
+
+    {{-- with parsing html --}}
+    <div class="text_gray">{!!$post->body!!}</div>
     <hr>
-    <small>Written on {{$post->created_at}}</small>
+    <small class="text_gray">Written on {{$post->created_at}}</small>
 @endsection

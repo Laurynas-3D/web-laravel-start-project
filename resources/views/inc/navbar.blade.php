@@ -19,6 +19,9 @@
           <li><a href="/hw">HW</a></li>
           <li><a href="/testbox">testbox</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/posts/create">Create Post</a></li>
+        </ul>
       </div><!--/.nav-collapse -->
     </div>
   </nav>

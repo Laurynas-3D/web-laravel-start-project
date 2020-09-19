@@ -1,0 +1,45 @@
+php artisan serve
+
+$ php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.8 — cli) by Justin Hileman
+>>> App\Post::count()
+=> 0
+>>> $post = new App\Post();
+=> App\Post {#4044}
+>>> $post->title = 'Post One';
+=> "Post One"
+>>> $post->body = 'This is the post body';
+=> "This is the post body"
+>>> $post->save();
+=> true
+>>>quit
+
+
+php artisan route:list
+
+php artisan make:controller PostsController --resource
+
+$ php artisan --version
+Laravel Framework 7.26.1
+
+
+https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installation.html
+
+1. npm install --save @ckeditor/ckeditor5-build-classic
+2. copy this file node_modules\@ckeditor\ckeditor5-build-classic\build\ckeditor.js
+3. paste it to public\js
+4. at app.blade.php, put <script src="{{asset('js/ckeditor.js')}}"></script> inside head tag
+5. put before closing your body tag
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+6. add these two lines to your head tag:
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+

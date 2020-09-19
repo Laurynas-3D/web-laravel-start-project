@@ -156,7 +156,7 @@ echo "<hr>";
 
 writeMsg("recursive test KESTO side task");
 
-echo "<h2>recursive test</h2><br>";
+echo "<h3>recursive test</h3><br>";
 
 $myArray = array(
     'example',
@@ -170,59 +170,45 @@ $myArray = array(
 );
 
 $array1 = [ 
-    'a1'=>"a1", 
-    'b1'=>"b1", 
-    'c1'=>"c1",
+    '1'=>"a1", 
+    '1'=>"b1", 
+    '1'=>"c1",
     'items' => [ 
-        'a2' => "a2", 
-        'b2' => "b2", 
-        'c2' => "c2", 
+        '2' => "a2", 
+        '2' => "b2", 
+        '2' => "c2", 
         'items'=> [ 
-            'x3'=> "x3", 
-            'z3'=> "z3", 
-            'y3' => 'y3',
+            '3'=> "x3", 
+            '3'=> "z3", 
+            '3' => 'y3',
         ], 
         'items'=> [ 
             'items'=> [
-                'mmm' => 'mmm', 
-                'kkk' => 'kkk',
+                'm' => 'mmm', 
+                'k' => 'kkk',
             ],
-            'alfa' => 'alfa',
-            'beta' => 'beta'
+            'al' => 'alfa',
+            'be' => 'beta'
         ]
     ]
 ];
 
 
-// https://www.php.net/manual/en/function.array-walk-recursive.php
-// Fully persistent. Using 'use' keyword
-
-
-// $counter = 0;
-// array_walk_recursive( $array1, function($value, $key) use (&$counter) {
-//    $counter++;
-//    echo "$counter - $value <br> "; 
-// }, $counter);
-// echo "counter : $counter";
-
-echo "<br> new function test";
-echo "<hr>";
-
 // https://thisinterestsme.com/php-using-recursion-print-values-multidimensional-array/
 
-function recursive($array){
+function recursive2($array){
     foreach($array as $key => $value){
         //If $value is an array.
         if(is_array($value)){
             //We need to loop through it.
-            recursive($value);
+            recursive2($value);
         } else{
             //It is not an array, so print it out.
             echo $value, '<br>';
         }
     }
 }
-
+recursive2($array1);
 
 
 echo "<br>";
@@ -245,12 +231,14 @@ echo "<h3>for each loop test - folder src</h3> <br>";
 
 $index = -1;
 $arr = $files1;
+$folderPath = "./";
 foreach ($arr as $value) {
     
     echo $value;
     echo "<br>";
 //     dd($value)
-//     $index++;
+    $index++;
+
 //     $indexfile = date ("F d Y H:i:s.", filemtime($value));
 //     $fileDate = new \DateTime($indexfile);
 //     $now = new \DateTime();
@@ -266,6 +254,8 @@ foreach ($arr as $value) {
 // print_r($arr);
 // // $arr is now array(2, 4, 6, 8)
 // unset($value); // break the reference with the last element
+
+
 
 
 // ------------------------------------ AWESOME RECURSION function to run through folders
@@ -313,8 +303,47 @@ readFolder( $folderPath );
 
 
 
+// function readFolder MY EDIT
+$folderPath2 = "./";
 
+function readFolder2( $path ) {
 
+    if ( !( $dir = opendir( $path ) ) ) die( "Can't open $path" );
+    $filenames = array();
+
+    while ( $filename = readdir( $dir ) ) {
+        if ( $filename != '.' && $filename != '..' ) {
+        if ( is_dir( "$path/$filename" ) ) $filename .= '/';
+        $filenames[] = $filename;
+        }
+    }
+    closedir ( $dir );
+    sort( $filenames );
+
+    //echo "<ul>";
+    foreach ( $filenames as $filename ) {
+        // echo $filename;
+        // echo "<br>";
+        // $file_time = date ("F d Y H:i:s.", filemtime($filename));
+        // $now_time = new \DateTime();
+        // $file_Date = new \DateTime($file_time);
+
+        // if ($file_Date->diff($now_time)->days > 2) { 
+        //     echo "<small style='color:green;'>#</small>";
+        // } else { 
+        //     echo "<small style='color:red;'>#</small>";
+        // }
+        
+        echo "$filename - <small style='color:lightgray;'>(...)</small>";
+        if ( substr( $filename, -1 ) == '/' ) readFolder2( "$path/" . substr( $filename , 0, -1 ) );
+        echo "<br>";
+        
+    }
+    //echo "</ul>";
+}
+
+echo "<br> <h3>Contents of public folder '$folderPath':</h3>";
+readFolder2( $folderPath2 );
 
 
 ?> 
