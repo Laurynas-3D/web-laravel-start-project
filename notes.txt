@@ -19,9 +19,20 @@ php artisan route:list
 
 php artisan make:controller PostsController --resource
 
+Setup laravel 7 auth.
+// it is going to replace app.blade.php file; make a backup
+1.composer require laravel/ui:^2.4
+2.php artisan ui vue --auth
+3.npm install
+4.npm run watch
+Then Test login & register.
+
 $ php artisan --version
 Laravel Framework 7.26.1
 
+php artisan make:migration add_user_id_to_posts
+php artisan migrate
+php artisan migrate:rollback
 
 https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installation.html
 

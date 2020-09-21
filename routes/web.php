@@ -46,3 +46,6 @@ Route::get('/testbox', 'Controller@testbox');
 
 // automatically map those routes to functions; PostsController.php
 Route::resource('posts', 'PostsController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('Dashboard');
