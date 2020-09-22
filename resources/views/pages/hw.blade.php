@@ -4,6 +4,7 @@
     <h1><?php echo $title;?></h1>
     <h3>This is the HW page to test functions</h3>
     <hr>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 
 {{-- function prints hello world message --}}
@@ -19,7 +20,8 @@ echo "<hr>";
 // ------------------------------------simple directory scanner example
 writeMsg("simple directory scanner example");
 
-$dir    = '../';
+// './' is a public folder
+$dir    = './';
 $files1 = scandir($dir); // Ascending Order
 $files2 = scandir($dir, 1); // Descending Order
 
@@ -335,15 +337,84 @@ function readFolder2( $path ) {
         // }
         
         echo "$filename - <small style='color:lightgray;'>(...)</small>";
-        if ( substr( $filename, -1 ) == '/' ) readFolder2( "$path/" . substr( $filename , 0, -1 ) );
+        if ( is_dir( "$path/$filename" ) ) readFolder2( "$path/" . substr( $filename , 0, -1 ) );
         echo "<br>";
-        
     }
     //echo "</ul>";
 }
 
 echo "<br> <h3>Contents of public folder '$folderPath':</h3>";
 readFolder2( $folderPath2 );
+
+
+// SCANDIR FUNCTION
+
+echo "<hr>";
+echo "<br> <h3>SCANDIR pubic folder:</h3>";
+
+// './' is a public folder
+$dir2 = './';
+$pathtoFile = 'favicon.ico';
+
+// Functio to print file working dir and checks whether a file or directory exists
+function testFile($fileToTest){
+
+// echo "$fileToTest";
+if (file_exists($fileToTest)) {
+    echo " - file exists - ";
+    echo getcwd();
+    } else {
+        echo " - file does not exist - ";
+        echo getcwd();
+    }
+}
+
+
+function testFileTime($fileToTest){
+
+    // echo "$fileToTest";
+    if (file_exists($fileToTest)) {
+
+    // Test file date
+    $file_time = date ("F d Y H:i:s.", filemtime($fileToTest));
+    $now_time = new \DateTime();
+    $file_Date = new \DateTime($file_time);
+    if ($file_Date->diff($now_time)->days > 2) { 
+        echo "$fileToTest <small style='color:green;'>##</small>";
+    } else { 
+        echo "$fileToTest <small style='color:red;'>##</small>";
+        }
+    } else {
+        echo " - file does not exist - ";
+    }
+}
+testFileTime($pathtoFile);
+
+// Functio to SCAN Folder
+function scanFolder($path){
+
+    echo "<hr>";
+    $files20 = scandir($path); // Ascending Order
+
+    // print_r($files20);
+    $array_modified = array_diff( $files20, ['..','.'] );
+    
+
+    foreach ( $array_modified as $file ) {
+        echo $file;
+        testFile($file);
+        echo "<br>";
+        if ( is_dir ( "$path/$file" ) ) {
+            // chdir($file);
+            // scanFolder("$path" . "\\" ."$file");
+            scanFolder("$path" ."\\". "$file");
+            // echo getcwd();
+        }
+    }
+}
+scanFolder($dir2);
+
+
 
 
 ?> 

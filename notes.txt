@@ -15,9 +15,9 @@ Psy Shell v0.10.4 (PHP 7.4.8 — cli) by Justin Hileman
 >>>quit
 
 
-php artisan route:list
+$ php artisan route:list
 
-php artisan make:controller PostsController --resource
+$ php artisan make:controller PostsController --resource
 
 Setup laravel 7 auth.
 // it is going to replace app.blade.php file; make a backup
@@ -33,6 +33,12 @@ Laravel Framework 7.26.1
 php artisan make:migration add_user_id_to_posts
 php artisan migrate
 php artisan migrate:rollback
+
+$ php artisan make:migration add_cover_image_to_posts
+php artisan migrate
+
+$ php artisan storage:link
+
 
 https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installation.html
 
