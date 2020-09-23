@@ -285,7 +285,7 @@ function readFolder( $path ) {
     closedir ( $dir );
 
     // Sort the filenames in alphabetical order
-    sort( $filenames );
+    // sort( $filenames );
 
     // Display the filenames, and process any subfolders
 
@@ -361,59 +361,65 @@ function testFile($fileToTest){
 
 // echo "$fileToTest";
 if (file_exists($fileToTest)) {
-    echo " - file exists - ";
-    echo getcwd();
+    echo " -<small style='color:green;'>file exists in</small>- ";
+    echo $fileToTest;
     } else {
-        echo " - file does not exist - ";
-        echo getcwd();
+        echo " -<small style='color:red;'>file does not exist in</small>- ";
+        echo $fileToTest;
     }
 }
 
 
 function testFileTime($fileToTest){
 
-    // echo "$fileToTest";
     if (file_exists($fileToTest)) {
 
-    // Test file date
-    $file_time = date ("F d Y H:i:s.", filemtime($fileToTest));
-    $now_time = new \DateTime();
-    $file_Date = new \DateTime($file_time);
-    if ($file_Date->diff($now_time)->days > 2) { 
-        echo "$fileToTest <small style='color:green;'>##</small>";
-    } else { 
-        echo "$fileToTest <small style='color:red;'>##</small>";
+        $file_time = date ("Y-m-d H:i:s.", filemtime($fileToTest));
+        $now_time = new \DateTime();
+        $file_Date = new \DateTime($file_time);
+        if ($file_Date->diff($now_time)->days > 2) { 
+            echo "<small style='color:red;'> $file_time --- deleting file</small>";
+            // echo "$fileToTest <small style='color:red;'>##</small>";
+            // unlink($fileToTest);
+            } else { 
+                echo "<small style='color:green;'> $file_time</small>";
+                // echo "$fileToTest <small style='color:green;'>##</small>"; 
+            }
+        } else {
+            echo " -file does not exist- ";
         }
-    } else {
-        echo " - file does not exist - ";
-    }
 }
-testFileTime($pathtoFile);
+// testFileTime($pathtoFile);
+?> 
+<?php
+
+ $dir3 = "C:\\laragon\\www\\vuetest\\backend\\public\\";
+// $dir3 = "C:\\Users\\laury\\Desktop\\public\\";
 
 // Functio to SCAN Folder
-function scanFolder($path){
+function scanFolder($path_to_scan){
 
-    echo "<hr>";
-    $files20 = scandir($path); // Ascending Order
-
-    // print_r($files20);
-    $array_modified = array_diff( $files20, ['..','.'] );
+    echo "<hr> --- WORKING Directory: " . $path_to_scan . "<br>";
+    $files_array = scandir($path_to_scan); // Ascending Order
+    $array_modified = array_diff( $files_array, ['..','.'] );
     
+    foreach ( $array_modified as $file_is ) {
 
-    foreach ( $array_modified as $file ) {
-        echo $file;
-        testFile($file);
+        echo $file_is;
+        testFileTime($path_to_scan . DIRECTORY_SEPARATOR . $file_is );
         echo "<br>";
-        if ( is_dir ( "$path/$file" ) ) {
-            // chdir($file);
-            // scanFolder("$path" . "\\" ."$file");
-            scanFolder("$path" ."\\". "$file");
-            // echo getcwd();
+        if ( is_dir ($file_is ) ) {
+            
+            // $path_new = getcwd() . '\\' .$file_is .'\\';
+            $path_new = $path_to_scan . $file_is ;
+            scanFolder($path_new);            
+            echo "<br>";
+        } else {
+            
         }
     }
 }
-scanFolder($dir2);
-
+scanFolder($dir3);
 
 
 
